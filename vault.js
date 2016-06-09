@@ -1,20 +1,25 @@
 'use strict';
 module.exports = function() {
 
-var storeKey;
+var storeKey = {};
 
-  function setValue( key, value){
-    value = key;
-    storeKey = value;
+  function _setValue( theKey, theValue ){
+    //console.log(theKey, theValue);
+    storeKey[theKey] = theValue;
+    //console.log(storeKey);
   }
 
-  function getValue( key ){
-    if (key === undefined) {
+  function _getValue( theKey ){
+    if (theKey === undefined || storeKey[theKey] === undefined) {
       return null;
     }else{
-      return storeKey;
+      console.log('hello', storeKey[theKey]);
+      return storeKey[theKey];
     }
 
   }
-
+return {
+  setValue: _setValue,
+  getValue: _getValue
+};
 };
